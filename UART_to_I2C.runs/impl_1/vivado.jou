@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Sat Feb 22 03:43:59 2025
+# Process ID         : 45176
+# Current directory  : C:/Users/Ben/VivadoProjects/UART_to_I2C/UART_to_I2C.runs/impl_1
+# Command line       : vivado.exe -log top_module.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_module.tcl -notrace
+# Log file           : C:/Users/Ben/VivadoProjects/UART_to_I2C/UART_to_I2C.runs/impl_1/top_module.vdi
+# Journal file       : C:/Users/Ben/VivadoProjects/UART_to_I2C/UART_to_I2C.runs/impl_1\vivado.jou
+# Running On         : DESKTOP-N159FB9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22000
+# Processor Detail   : 12th Gen Intel(R) Core(TM) i7-12700K
+# CPU Frequency      : 3610 MHz
+# CPU Physical cores : 12
+# CPU Logical cores  : 20
+# Host memory        : 34170 MB
+# Swap memory        : 13301 MB
+# Total Virtual      : 47472 MB
+# Available Virtual  : 7146 MB
+#-----------------------------------------------------------
+source top_module.tcl -notrace
