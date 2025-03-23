@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date         : Sat Feb 22 03:43:26 2025
+| Date         : Sat Mar 22 23:52:48 2025
 | Host         : DESKTOP-N159FB9 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_module_control_sets_placed.rpt
 | Design       : top_module
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    14 |
-|    Minimum number of control sets                        |    14 |
+| Total control sets                                       |    29 |
+|    Minimum number of control sets                        |    29 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    39 |
+| Unused register locations in slices containing registers |    74 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    14 |
-| >= 0 to < 4        |     2 |
-| >= 4 to < 6        |     3 |
-| >= 6 to < 8        |     1 |
-| >= 8 to < 10       |     2 |
+| Total control sets |    29 |
+| >= 0 to < 4        |     4 |
+| >= 4 to < 6        |     6 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     6 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
-| >= 14 to < 16      |     2 |
-| >= 16              |     4 |
+| >= 14 to < 16      |     4 |
+| >= 16              |     6 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,35 +58,50 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              21 |           11 |
+| No           | No                    | No                     |              31 |           17 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              42 |           12 |
-| Yes          | No                    | No                     |             827 |          172 |
+| No           | Yes                   | No                     |              42 |           11 |
+| Yes          | No                    | No                     |             925 |          318 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              39 |           13 |
+| Yes          | Yes                   | No                     |             112 |           32 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+------------------------------------------+----------------------------------+------------------+----------------+--------------+
-|  Clock Signal  |               Enable Signal              |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+------------------------------------------+----------------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG | I2C/I2C_clk_out_i_1_n_0                  |                                  |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG | I2C/I2C_data_out0                        | I2C/I2C_data_out2_out            |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG | UART/byteCounter                         | UART/byteCounter[3]_i_1_n_0      |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG | I2C/send_bit_counter[4]_i_2_n_0          | I2C/send_bit_counter[4]_i_1_n_0  |                2 |              5 |         2.50 |
-|  clk_IBUF_BUFG | UART/receiveBitCount[4]_i_1_n_0          |                                  |                2 |              5 |         2.50 |
-|  clk_IBUF_BUFG | I2C/send_byte_counter[7]_i_2_n_0         | I2C/send_byte_counter[7]_i_1_n_0 |                2 |              6 |         3.00 |
-|  clk_IBUF_BUFG | UART/sel                                 | UART/haveReceived7_out           |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG | UART/count                               |                                  |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG | UART/receiveBitCountTotalCopy[7]_i_1_n_0 |                                  |                4 |             14 |         3.50 |
-|  clk_IBUF_BUFG | UART/receiveState                        | UART/UartRxCount[14]_i_1_n_0     |                4 |             15 |         3.75 |
-|  clk_IBUF_BUFG |                                          |                                  |               11 |             21 |         1.91 |
-|  clk_IBUF_BUFG |                                          | I2C/send_bit_counter[4]_i_1_n_0  |                6 |             21 |         3.50 |
-|  clk_IBUF_BUFG |                                          | UART/count                       |                6 |             21 |         3.50 |
-|  clk_IBUF_BUFG | UART/inputBuffer[799]_i_1_n_0            |                                  |              162 |            799 |         4.93 |
-+----------------+------------------------------------------+----------------------------------+------------------+----------------+--------------+
++----------------+------------------------------------------+---------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |               Enable Signal              |            Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+------------------------------------------+---------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | I2C/I2C_clk_out_i_1_n_0                  |                                       |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | I2C/I2C_data_out_i_2_n_0                 | I2C/I2C_data_out_i_1_n_0              |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | I2C/read_byte_counter                    | I2C/read_byte_counter[5]_i_1_n_0      |                1 |              2 |         2.00 |
+|  clk_IBUF_BUFG | UART/TxD_i_2_n_0                         | UART/TxD2_out                         |                1 |              2 |         2.00 |
+|  clk_IBUF_BUFG | I2C/send_bit_counter[4]_i_2_n_0          | I2C/send_bit_counter[4]_i_1_n_0       |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | UART/data_TX[3]_i_1_n_0                  |                                       |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | UART/outputBuffer[79]_i_1_n_0            | UART/byteCounter[3]_i_1_n_0           |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | I2C/read_byte_counter                    |                                       |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG | UART/TxD0_out                            | UART/TxD5_out                         |                1 |              5 |         5.00 |
+|  clk_IBUF_BUFG | UART/receiveBitCount[4]_i_1_n_0          |                                       |                1 |              5 |         5.00 |
+|  clk_IBUF_BUFG | UART/numBits[7]_i_2_n_0                  | UART/doneTransmit9_out                |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG | I2C/I2C_to_UART[7]_i_1_n_0               |                                       |                1 |              7 |         7.00 |
+|  clk_IBUF_BUFG | I2C/send_byte_counter[8]_i_2_n_0         | I2C/send_byte_counter[8]_i_1_n_0      |                3 |              7 |         2.33 |
+|  clk_IBUF_BUFG | I2C/addressIC[7]_i_1_n_0                 |                                       |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | I2C/read_byte_counter_max_0              |                                       |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | UART/data[7]_i_1_n_0                     |                                       |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | UART/outputBuffer[7]_i_2_n_0             | UART/outputBuffer[7]_i_1_n_0          |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG | UART/sendTotalByteCount                  |                                       |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | UART/sel                                 | UART/haveReceived38_out               |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | UART/inputBuffer[799]_i_1_n_0            | UART/inputBuffer[14]_i_1_n_0          |                2 |             14 |         7.00 |
+|  clk_IBUF_BUFG | UART/receiveBitCountTotalCopy[7]_i_1_n_0 |                                       |                3 |             14 |         4.67 |
+|  clk_IBUF_BUFG | UART/transmit_state_TX                   | UART/TxD5_out                         |                4 |             15 |         3.75 |
+|  clk_IBUF_BUFG | UART/receiveState                        | UART/UartRxCount[14]_i_1_n_0          |                5 |             15 |         3.00 |
+|  clk_IBUF_BUFG |                                          | I2C/I2C_clock_count_start[20]_i_1_n_0 |                5 |             21 |         4.20 |
+|  clk_IBUF_BUFG |                                          | UART/count[0]_i_1_n_0                 |                6 |             21 |         3.50 |
+|  clk_IBUF_BUFG | UART/p_4_in                              | UART/TXcount[0]_i_1_n_0               |                6 |             21 |         3.50 |
+|  clk_IBUF_BUFG |                                          |                                       |               17 |             31 |         1.82 |
+|  clk_IBUF_BUFG | UART/outputBuffer[79]_i_1_n_0            |                                       |               18 |             72 |         4.00 |
+|  clk_IBUF_BUFG | UART/inputBuffer[799]_i_1_n_0            |                                       |              280 |            785 |         2.80 |
++----------------+------------------------------------------+---------------------------------------+------------------+----------------+--------------+
 
 

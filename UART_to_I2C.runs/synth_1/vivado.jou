@@ -3,8 +3,8 @@
 # SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
 # IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
 # SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-# Start of session at: Sat Feb 22 03:42:31 2025
-# Process ID         : 40656
+# Start of session at: Sat Mar 22 23:48:10 2025
+# Process ID         : 15724
 # Current directory  : C:/Users/Ben/VivadoProjects/UART_to_I2C/UART_to_I2C.runs/synth_1
 # Command line       : vivado.exe -log top_module.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_module.tcl
 # Log file           : C:/Users/Ben/VivadoProjects/UART_to_I2C/UART_to_I2C.runs/synth_1/top_module.vds
@@ -17,8 +17,8 @@
 # CPU Physical cores : 12
 # CPU Logical cores  : 20
 # Host memory        : 34170 MB
-# Swap memory        : 13301 MB
-# Total Virtual      : 47472 MB
-# Available Virtual  : 7403 MB
+# Swap memory        : 24696 MB
+# Total Virtual      : 58866 MB
+# Available Virtual  : 25067 MB
 #-----------------------------------------------------------
 source top_module.tcl -notrace

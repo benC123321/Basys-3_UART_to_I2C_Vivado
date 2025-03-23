@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date         : Sat Feb 22 03:43:41 2025
+| Date         : Sat Mar 22 23:53:03 2025
 | Host         : DESKTOP-N159FB9 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file top_module_timing_summary_routed.rpt -pb top_module_timing_summary_routed.pb -rpx top_module_timing_summary_routed.rpx -warn_on_violation
 | Design       : top_module
@@ -43,7 +43,7 @@ Timing Summary Report
 
 Rule       Severity          Description                  Violations  
 ---------  ----------------  ---------------------------  ----------  
-TIMING-17  Critical Warning  Non-clocked sequential cell  929         
+TIMING-17  Critical Warning  Non-clocked sequential cell  1000        
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -53,12 +53,12 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (929)
+1. checking no_clock (1110)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (1876)
-5. checking no_input_delay (1)
-6. checking no_output_delay (3)
+4. checking unconstrained_internal_endpoints (2301)
+5. checking no_input_delay (2)
+6. checking no_output_delay (4)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -66,9 +66,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (929)
---------------------------
- There are 929 register/latch pins with no clock driven by root clock pin: clk (HIGH)
+1. checking no_clock (1110)
+---------------------------
+ There are 1110 register/latch pins with no clock driven by root clock pin: clk (HIGH)
 
 
 2. checking constant_clock (0)
@@ -81,23 +81,23 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (1876)
+4. checking unconstrained_internal_endpoints (2301)
 ---------------------------------------------------
- There are 1876 pins that are not constrained for maximum delay. (HIGH)
+ There are 2301 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (1)
+5. checking no_input_delay (2)
 ------------------------------
- There is 1 input port with no input delay specified. (HIGH)
+ There are 2 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (3)
+6. checking no_output_delay (4)
 -------------------------------
- There are 3 ports with no output delay specified. (HIGH)
+ There are 4 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -142,7 +142,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                 1879          inf        0.000                      0                 1879           NA           NA                      NA                    NA  
+        inf        0.000                      0                 2305          inf        0.000                      0                 2305           NA           NA                      NA                    NA  
 
 
 There are no user specified timing constraints.
@@ -211,251 +211,201 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay          1879 Endpoints
-Min Delay          1879 Endpoints
+Max Delay          2305 Endpoints
+Min Delay          2305 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[179]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[732]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.845ns  (logic 1.828ns (16.857%)  route 9.017ns (83.143%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.931ns  (logic 0.580ns (4.485%)  route 12.351ns (95.515%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.338    10.845    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X56Y86         FDRE                                         r  UART/inputBuffer_reg[179]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        12.351    12.807    UART/receiveState
+    SLICE_X29Y87         LUT5 (Prop_lut5_I2_O)        0.124    12.931 r  UART/inputBuffer[732]_i_1/O
+                         net (fo=1, routed)           0.000    12.931    UART/inputBuffer[732]_i_1_n_0
+    SLICE_X29Y87         FDRE                                         r  UART/inputBuffer_reg[732]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[180]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[761]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.845ns  (logic 1.828ns (16.857%)  route 9.017ns (83.143%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.856ns  (logic 0.580ns (4.512%)  route 12.276ns (95.488%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.338    10.845    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X56Y86         FDRE                                         r  UART/inputBuffer_reg[180]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        12.276    12.732    UART/receiveState
+    SLICE_X29Y88         LUT5 (Prop_lut5_I2_O)        0.124    12.856 r  UART/inputBuffer[761]_i_1/O
+                         net (fo=1, routed)           0.000    12.856    UART/inputBuffer[761]_i_1_n_0
+    SLICE_X29Y88         FDRE                                         r  UART/inputBuffer_reg[761]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[195]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[762]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.845ns  (logic 1.828ns (16.857%)  route 9.017ns (83.143%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.854ns  (logic 0.580ns (4.512%)  route 12.274ns (95.488%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.338    10.845    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X56Y86         FDRE                                         r  UART/inputBuffer_reg[195]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        12.274    12.730    UART/receiveState
+    SLICE_X29Y88         LUT5 (Prop_lut5_I2_O)        0.124    12.854 r  UART/inputBuffer[762]_i_1/O
+                         net (fo=1, routed)           0.000    12.854    UART/inputBuffer[762]_i_1_n_0
+    SLICE_X29Y88         FDRE                                         r  UART/inputBuffer_reg[762]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[196]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[760]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.845ns  (logic 1.828ns (16.857%)  route 9.017ns (83.143%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.755ns  (logic 0.580ns (4.547%)  route 12.175ns (95.453%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.338    10.845    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X56Y86         FDRE                                         r  UART/inputBuffer_reg[196]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        12.175    12.631    UART/receiveState
+    SLICE_X31Y87         LUT5 (Prop_lut5_I2_O)        0.124    12.755 r  UART/inputBuffer[760]_i_1/O
+                         net (fo=1, routed)           0.000    12.755    UART/inputBuffer[760]_i_1_n_0
+    SLICE_X31Y87         FDRE                                         r  UART/inputBuffer_reg[760]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[209]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[759]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.817ns  (logic 1.828ns (16.902%)  route 8.988ns (83.098%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.753ns  (logic 0.580ns (4.548%)  route 12.173ns (95.452%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.310    10.817    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X62Y86         FDRE                                         r  UART/inputBuffer_reg[209]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        12.173    12.629    UART/receiveState
+    SLICE_X31Y87         LUT5 (Prop_lut5_I2_O)        0.124    12.753 r  UART/inputBuffer[759]_i_1/O
+                         net (fo=1, routed)           0.000    12.753    UART/inputBuffer[759]_i_1_n_0
+    SLICE_X31Y87         FDRE                                         r  UART/inputBuffer_reg[759]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[225]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[731]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.817ns  (logic 1.828ns (16.902%)  route 8.988ns (83.098%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.719ns  (logic 0.580ns (4.560%)  route 12.139ns (95.440%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.310    10.817    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X62Y86         FDRE                                         r  UART/inputBuffer_reg[225]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        12.139    12.595    UART/receiveState
+    SLICE_X28Y87         LUT5 (Prop_lut5_I2_O)        0.124    12.719 r  UART/inputBuffer[731]_i_1/O
+                         net (fo=1, routed)           0.000    12.719    UART/inputBuffer[731]_i_1_n_0
+    SLICE_X28Y87         FDRE                                         r  UART/inputBuffer_reg[731]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[189]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[745]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.799ns  (logic 1.828ns (16.929%)  route 8.971ns (83.071%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.708ns  (logic 0.580ns (4.564%)  route 12.128ns (95.436%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.293    10.799    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X59Y86         FDRE                                         r  UART/inputBuffer_reg[189]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        12.128    12.584    UART/receiveState
+    SLICE_X28Y87         LUT5 (Prop_lut5_I2_O)        0.124    12.708 r  UART/inputBuffer[745]_i_1/O
+                         net (fo=1, routed)           0.000    12.708    UART/inputBuffer[745]_i_1_n_0
+    SLICE_X28Y87         FDRE                                         r  UART/inputBuffer_reg[745]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[190]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[704]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.799ns  (logic 1.828ns (16.929%)  route 8.971ns (83.071%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.574ns  (logic 0.580ns (4.613%)  route 11.994ns (95.387%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.293    10.799    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X59Y86         FDRE                                         r  UART/inputBuffer_reg[190]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        11.994    12.450    UART/receiveState
+    SLICE_X32Y87         LUT5 (Prop_lut5_I2_O)        0.124    12.574 r  UART/inputBuffer[704]_i_1/O
+                         net (fo=1, routed)           0.000    12.574    UART/inputBuffer[704]_i_1_n_0
+    SLICE_X32Y87         FDRE                                         r  UART/inputBuffer_reg[704]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[205]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[719]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.799ns  (logic 1.828ns (16.929%)  route 8.971ns (83.071%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.567ns  (logic 0.580ns (4.615%)  route 11.987ns (95.385%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.293    10.799    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X59Y86         FDRE                                         r  UART/inputBuffer_reg[205]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        11.987    12.443    UART/receiveState
+    SLICE_X32Y87         LUT5 (Prop_lut5_I2_O)        0.124    12.567 r  UART/inputBuffer[719]_i_1/O
+                         net (fo=1, routed)           0.000    12.567    UART/inputBuffer[719]_i_1_n_0
+    SLICE_X32Y87         FDRE                                         r  UART/inputBuffer_reg[719]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 RxD
-                            (input port)
-  Destination:            UART/inputBuffer_reg[206]/CE
+  Source:                 UART/receiveState_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UART/inputBuffer_reg[765]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.799ns  (logic 1.828ns (16.929%)  route 8.971ns (83.071%))
-  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        12.556ns  (logic 0.580ns (4.619%)  route 11.976ns (95.381%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    B18                                               0.000     0.000 r  RxD (IN)
-                         net (fo=0)                   0.000     0.000    RxD
-    B18                  IBUF (Prop_ibuf_I_O)         1.456     1.456 r  RxD_IBUF_inst/O
-                         net (fo=4, routed)           3.352     4.808    UART/RxD_IBUF
-    SLICE_X50Y89         LUT6 (Prop_lut6_I0_O)        0.124     4.932 f  UART/inputBuffer[799]_i_9/O
-                         net (fo=3, routed)           0.333     5.265    UART/inputBuffer[799]_i_9_n_0
-    SLICE_X48Y89         LUT2 (Prop_lut2_I0_O)        0.124     5.389 f  UART/inputBuffer[799]_i_5/O
-                         net (fo=3, routed)           0.993     6.383    UART/inputBuffer[799]_i_5_n_0
-    SLICE_X51Y89         LUT6 (Prop_lut6_I4_O)        0.124     6.507 r  UART/inputBuffer[799]_i_1/O
-                         net (fo=799, routed)         4.293    10.799    UART/inputBuffer[799]_i_1_n_0
-    SLICE_X59Y86         FDRE                                         r  UART/inputBuffer_reg[206]/CE
+    SLICE_X48Y85         FDRE                         0.000     0.000 r  UART/receiveState_reg/C
+    SLICE_X48Y85         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UART/receiveState_reg/Q
+                         net (fo=808, routed)        11.976    12.432    UART/receiveState
+    SLICE_X31Y88         LUT5 (Prop_lut5_I2_O)        0.124    12.556 r  UART/inputBuffer[765]_i_1/O
+                         net (fo=1, routed)           0.000    12.556    UART/inputBuffer[765]_i_1_n_0
+    SLICE_X31Y88         FDRE                                         r  UART/inputBuffer_reg[765]/D
   -------------------------------------------------------------------    -------------------
 
 
@@ -465,193 +415,173 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 I2C/send_byte_counter_reg[4]/C
+  Source:                 UART/outputBuffer_reg[63]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            I2C/send_byte_counter_reg[5]/D
+  Destination:            UART/outputBuffer_reg[71]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.271ns  (logic 0.186ns (68.566%)  route 0.085ns (31.434%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
+  Data Path Delay:        0.187ns  (logic 0.128ns (68.470%)  route 0.059ns (31.530%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X58Y91         FDRE                         0.000     0.000 r  I2C/send_byte_counter_reg[4]/C
-    SLICE_X58Y91         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  I2C/send_byte_counter_reg[4]/Q
-                         net (fo=7, routed)           0.085     0.226    I2C/send_byte_counter[4]
-    SLICE_X59Y91         LUT6 (Prop_lut6_I1_O)        0.045     0.271 r  I2C/send_byte_counter[5]_i_1/O
-                         net (fo=1, routed)           0.000     0.271    I2C/send_byte_counter[5]_i_1_n_0
-    SLICE_X59Y91         FDRE                                         r  I2C/send_byte_counter_reg[5]/D
+    SLICE_X63Y96         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[63]/C
+    SLICE_X63Y96         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  UART/outputBuffer_reg[63]/Q
+                         net (fo=2, routed)           0.059     0.187    UART/outputBuffer[71]
+    SLICE_X62Y96         FDRE                                         r  UART/outputBuffer_reg[71]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UART/inputBuffer_reg[339]/C
+  Source:                 UART/outputBuffer_reg[70]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UART/inputBuffer_reg[338]/D
+  Destination:            UART/outputBuffer_reg[78]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.272ns  (logic 0.186ns (68.463%)  route 0.086ns (31.537%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.197ns  (logic 0.141ns (71.611%)  route 0.056ns (28.389%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X58Y79         FDRE                         0.000     0.000 r  UART/inputBuffer_reg[339]/C
-    SLICE_X58Y79         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/inputBuffer_reg[339]/Q
-                         net (fo=2, routed)           0.086     0.227    UART/inputBuffer[339]
-    SLICE_X59Y79         LUT3 (Prop_lut3_I0_O)        0.045     0.272 r  UART/inputBuffer[338]_i_1/O
-                         net (fo=1, routed)           0.000     0.272    UART/inputBuffer[338]_i_1_n_0
-    SLICE_X59Y79         FDRE                                         r  UART/inputBuffer_reg[338]/D
+    SLICE_X65Y93         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[70]/C
+    SLICE_X65Y93         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/outputBuffer_reg[70]/Q
+                         net (fo=2, routed)           0.056     0.197    UART/outputBuffer[78]
+    SLICE_X65Y93         FDRE                                         r  UART/outputBuffer_reg[78]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UART/inputBuffer_reg[720]/C
+  Source:                 UART/outputBuffer_reg[23]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UART/inputBuffer_reg[719]/D
+  Destination:            UART/outputBuffer_reg[31]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.272ns  (logic 0.186ns (68.463%)  route 0.086ns (31.537%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.200ns  (logic 0.141ns (70.589%)  route 0.059ns (29.411%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X48Y70         FDRE                         0.000     0.000 r  UART/inputBuffer_reg[720]/C
-    SLICE_X48Y70         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/inputBuffer_reg[720]/Q
-                         net (fo=2, routed)           0.086     0.227    UART/inputBuffer[720]
-    SLICE_X49Y70         LUT3 (Prop_lut3_I0_O)        0.045     0.272 r  UART/inputBuffer[719]_i_1/O
-                         net (fo=1, routed)           0.000     0.272    UART/inputBuffer[719]_i_1_n_0
-    SLICE_X49Y70         FDRE                                         r  UART/inputBuffer_reg[719]/D
+    SLICE_X62Y94         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[23]/C
+    SLICE_X62Y94         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/outputBuffer_reg[23]/Q
+                         net (fo=2, routed)           0.059     0.200    UART/outputBuffer[31]
+    SLICE_X62Y94         FDRE                                         r  UART/outputBuffer_reg[31]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UART/inputBuffer_reg[284]/C
+  Source:                 UART/outputBuffer_reg[59]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UART/inputBuffer_reg[283]/D
+  Destination:            UART/outputBuffer_reg[67]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.273ns  (logic 0.186ns (68.212%)  route 0.087ns (31.788%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.207ns  (logic 0.128ns (61.834%)  route 0.079ns (38.166%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X62Y78         FDRE                         0.000     0.000 r  UART/inputBuffer_reg[284]/C
-    SLICE_X62Y78         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/inputBuffer_reg[284]/Q
-                         net (fo=2, routed)           0.087     0.228    UART/inputBuffer[284]
-    SLICE_X63Y78         LUT3 (Prop_lut3_I0_O)        0.045     0.273 r  UART/inputBuffer[283]_i_1/O
-                         net (fo=1, routed)           0.000     0.273    UART/inputBuffer[283]_i_1_n_0
-    SLICE_X63Y78         FDRE                                         r  UART/inputBuffer_reg[283]/D
+    SLICE_X63Y96         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[59]/C
+    SLICE_X63Y96         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  UART/outputBuffer_reg[59]/Q
+                         net (fo=2, routed)           0.079     0.207    UART/outputBuffer[67]
+    SLICE_X62Y96         FDRE                                         r  UART/outputBuffer_reg[67]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UART/inputBuffer_reg[376]/C
+  Source:                 UART/outputBuffer_reg[51]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UART/inputBuffer_reg[375]/D
+  Destination:            UART/outputBuffer_reg[59]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.273ns  (logic 0.186ns (68.106%)  route 0.087ns (31.894%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.209ns  (logic 0.141ns (67.454%)  route 0.068ns (32.546%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X57Y77         FDRE                         0.000     0.000 r  UART/inputBuffer_reg[376]/C
-    SLICE_X57Y77         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/inputBuffer_reg[376]/Q
-                         net (fo=2, routed)           0.087     0.228    UART/inputBuffer[376]
-    SLICE_X56Y77         LUT3 (Prop_lut3_I0_O)        0.045     0.273 r  UART/inputBuffer[375]_i_1/O
-                         net (fo=1, routed)           0.000     0.273    UART/inputBuffer[375]_i_1_n_0
-    SLICE_X56Y77         FDRE                                         r  UART/inputBuffer_reg[375]/D
+    SLICE_X63Y96         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[51]/C
+    SLICE_X63Y96         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/outputBuffer_reg[51]/Q
+                         net (fo=2, routed)           0.068     0.209    UART/outputBuffer[59]
+    SLICE_X63Y96         FDRE                                         r  UART/outputBuffer_reg[59]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UART/inputBuffer_reg[408]/C
+  Source:                 UART/outputBuffer_reg[55]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UART/inputBuffer_reg[407]/D
+  Destination:            UART/outputBuffer_reg[63]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.273ns  (logic 0.186ns (68.106%)  route 0.087ns (31.894%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.209ns  (logic 0.141ns (67.454%)  route 0.068ns (32.546%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X57Y76         FDRE                         0.000     0.000 r  UART/inputBuffer_reg[408]/C
-    SLICE_X57Y76         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/inputBuffer_reg[408]/Q
-                         net (fo=2, routed)           0.087     0.228    UART/inputBuffer[408]
-    SLICE_X56Y76         LUT3 (Prop_lut3_I0_O)        0.045     0.273 r  UART/inputBuffer[407]_i_1/O
-                         net (fo=1, routed)           0.000     0.273    UART/inputBuffer[407]_i_1_n_0
-    SLICE_X56Y76         FDRE                                         r  UART/inputBuffer_reg[407]/D
+    SLICE_X63Y96         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[55]/C
+    SLICE_X63Y96         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/outputBuffer_reg[55]/Q
+                         net (fo=2, routed)           0.068     0.209    UART/outputBuffer[63]
+    SLICE_X63Y96         FDRE                                         r  UART/outputBuffer_reg[63]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UART/inputBuffer_reg[534]/C
+  Source:                 UART/outputBuffer_reg[15]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UART/inputBuffer_reg[533]/D
+  Destination:            UART/outputBuffer_reg[23]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.273ns  (logic 0.186ns (68.106%)  route 0.087ns (31.894%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.210ns  (logic 0.141ns (67.004%)  route 0.069ns (32.996%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X53Y74         FDRE                         0.000     0.000 r  UART/inputBuffer_reg[534]/C
-    SLICE_X53Y74         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/inputBuffer_reg[534]/Q
-                         net (fo=2, routed)           0.087     0.228    UART/inputBuffer[534]
-    SLICE_X52Y74         LUT3 (Prop_lut3_I0_O)        0.045     0.273 r  UART/inputBuffer[533]_i_1/O
-                         net (fo=1, routed)           0.000     0.273    UART/inputBuffer[533]_i_1_n_0
-    SLICE_X52Y74         FDRE                                         r  UART/inputBuffer_reg[533]/D
+    SLICE_X63Y94         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[15]/C
+    SLICE_X63Y94         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/outputBuffer_reg[15]/Q
+                         net (fo=2, routed)           0.069     0.210    UART/outputBuffer[23]
+    SLICE_X62Y94         FDRE                                         r  UART/outputBuffer_reg[23]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UART/inputBuffer_reg[339]/C
+  Source:                 UART/outputBuffer_reg[54]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UART/inputBuffer_reg[354]/D
+  Destination:            UART/outputBuffer_reg[62]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.275ns  (logic 0.189ns (68.807%)  route 0.086ns (31.193%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.220ns  (logic 0.164ns (74.580%)  route 0.056ns (25.420%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X58Y79         FDRE                         0.000     0.000 r  UART/inputBuffer_reg[339]/C
-    SLICE_X58Y79         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/inputBuffer_reg[339]/Q
-                         net (fo=2, routed)           0.086     0.227    UART/inputBuffer[339]
-    SLICE_X59Y79         LUT3 (Prop_lut3_I2_O)        0.048     0.275 r  UART/inputBuffer[354]_i_1/O
-                         net (fo=1, routed)           0.000     0.275    UART/inputBuffer[354]_i_1_n_0
-    SLICE_X59Y79         FDRE                                         r  UART/inputBuffer_reg[354]/D
+    SLICE_X64Y91         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[54]/C
+    SLICE_X64Y91         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  UART/outputBuffer_reg[54]/Q
+                         net (fo=2, routed)           0.056     0.220    UART/outputBuffer[62]
+    SLICE_X64Y91         FDRE                                         r  UART/outputBuffer_reg[62]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UART/inputBuffer_reg[720]/C
+  Source:                 UART/outputBuffer_reg[22]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UART/inputBuffer_reg[735]/D
+  Destination:            UART/outputBuffer_reg[30]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.275ns  (logic 0.189ns (68.807%)  route 0.086ns (31.193%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.248ns  (logic 0.141ns (56.847%)  route 0.107ns (43.153%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X48Y70         FDRE                         0.000     0.000 r  UART/inputBuffer_reg[720]/C
-    SLICE_X48Y70         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/inputBuffer_reg[720]/Q
-                         net (fo=2, routed)           0.086     0.227    UART/inputBuffer[720]
-    SLICE_X49Y70         LUT3 (Prop_lut3_I2_O)        0.048     0.275 r  UART/inputBuffer[735]_i_1/O
-                         net (fo=1, routed)           0.000     0.275    UART/inputBuffer[735]_i_1_n_0
-    SLICE_X49Y70         FDRE                                         r  UART/inputBuffer_reg[735]/D
+    SLICE_X62Y91         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[22]/C
+    SLICE_X62Y91         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/outputBuffer_reg[22]/Q
+                         net (fo=2, routed)           0.107     0.248    UART/outputBuffer[30]
+    SLICE_X65Y91         FDRE                                         r  UART/outputBuffer_reg[30]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UART/inputBuffer_reg[376]/C
+  Source:                 UART/outputBuffer_reg[18]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UART/inputBuffer_reg[391]/D
+  Destination:            UART/outputBuffer_reg[26]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.276ns  (logic 0.189ns (68.452%)  route 0.087ns (31.548%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.248ns  (logic 0.141ns (56.745%)  route 0.107ns (43.255%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X57Y77         FDRE                         0.000     0.000 r  UART/inputBuffer_reg[376]/C
-    SLICE_X57Y77         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/inputBuffer_reg[376]/Q
-                         net (fo=2, routed)           0.087     0.228    UART/inputBuffer[376]
-    SLICE_X56Y77         LUT3 (Prop_lut3_I2_O)        0.048     0.276 r  UART/inputBuffer[391]_i_1/O
-                         net (fo=1, routed)           0.000     0.276    UART/inputBuffer[391]_i_1_n_0
-    SLICE_X56Y77         FDRE                                         r  UART/inputBuffer_reg[391]/D
+    SLICE_X62Y90         FDRE                         0.000     0.000 r  UART/outputBuffer_reg[18]/C
+    SLICE_X62Y90         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UART/outputBuffer_reg[18]/Q
+                         net (fo=2, routed)           0.107     0.248    UART/outputBuffer[26]
+    SLICE_X65Y91         FDRE                                         r  UART/outputBuffer_reg[26]/D
   -------------------------------------------------------------------    -------------------
 
 

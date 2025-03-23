@@ -58,7 +58,6 @@ if {$::dispatch::connected} {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 5
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -75,7 +74,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   C:/Users/Ben/VivadoProjects/UART_to_I2C/UART_to_I2C.srcs/sources_1/new/I2C_module.v
-  C:/Users/Ben/VivadoProjects/UART_to_I2C/UART_to_I2C.srcs/sources_1/new/Led_Blink.v
+  C:/Users/Ben/VivadoProjects/UART_to_I2C/UART_to_I2C.srcs/sources_1/new/UART_module.v
   C:/Users/Ben/VivadoProjects/UART_to_I2C/UART_to_I2C.srcs/sources_1/new/top_module.v
 }
 OPTRACE "Adding files" END { }

@@ -32,8 +32,11 @@ set_property PACKAGE_PIN L2 [get_ports I2C_data_out]
 #set_property PACKAGE_PIN J1 [get_ports TxD_debug]					
 #	set_property IOSTANDARD LVCMOS33 [get_ports TxD_debug]
 ##Sch name = JA3
-set_property PACKAGE_PIN J2 [get_ports UART_DATA_READY]					
-	set_property IOSTANDARD LVCMOS33 [get_ports UART_DATA_READY]
+set_property PACKAGE_PIN J2 [get_ports I2C_data_in]					
+	set_property IOSTANDARD LVCMOS33 [get_ports I2C_data_in]
+	
+set_property PACKAGE_PIN G2 [get_ports debugRxD]					
+	set_property IOSTANDARD LVCMOS33 [get_ports debugRxD]
 
 set_property PACKAGE_PIN B18 [get_ports RxD]						
 	set_property IOSTANDARD LVCMOS33 [get_ports RxD]
